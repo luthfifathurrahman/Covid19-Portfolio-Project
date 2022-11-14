@@ -417,6 +417,26 @@ or location like '%vietnam%'
 GROUP BY location
 ORDER BY highest_total_cases desc
 
+-- Creating View For The Highest Total Cases in ASEAN Country
+CREATE VIEW HighestTotalCasesASEAN AS
+SELECT location, MAX(total_cases) AS highest_total_cases
+FROM CovidPortfolioProject.dbo.CovidDeaths
+WHERE continent not like '%undefined%' 
+and location like '%brunei%'
+or location like '%cambodia%'
+or location like '%indonesia%'
+or location like '%laos%'
+or location like '%malaysia%'
+or location like '%myanmar%'
+or location like '%philippines%'
+or location like '%singapore%'
+or location like '%thailand%'
+or location like '%vietnam%'
+GROUP BY location
+
+SELECT *
+FROM HighestTotalCasesASEAN
+
 -- Looking For The Highest Total Deaths in ASEAN Country
 SELECT location, MAX(total_deaths) AS highest_total_deaths
 FROM CovidPortfolioProject.dbo.CovidDeaths
@@ -433,6 +453,26 @@ or location like '%thailand%'
 or location like '%vietnam%'
 GROUP BY location
 ORDER BY highest_total_deaths desc
+
+-- Creating View For The Highest Total Deaths in ASEAN Country
+CREATE VIEW HighestTotalDeathASEAN AS
+SELECT location, MAX(total_deaths) AS highest_total_deaths
+FROM CovidPortfolioProject.dbo.CovidDeaths
+WHERE continent not like '%undefined%' 
+and location like '%brunei%'
+or location like '%cambodia%'
+or location like '%indonesia%'
+or location like '%laos%'
+or location like '%malaysia%'
+or location like '%myanmar%'
+or location like '%philippines%'
+or location like '%singapore%'
+or location like '%thailand%'
+or location like '%vietnam%'
+GROUP BY location
+
+SELECT *
+FROM HighestTotalDeathASEAN
 
 /*
 Case Fatality Rate (CFR)
@@ -457,6 +497,27 @@ or location like '%vietnam%'
 GROUP BY location
 ORDER BY case_fatality_rate DESC
 
+-- Creating View For The Highest CFR in ASEAN Country
+CREATE VIEW HighestCFRASEAN AS
+SELECT location, MAX(total_deaths) AS highest_total_deaths, MAX(total_cases) AS highest_total_cases,
+		(MAX(total_deaths)/MAX(total_cases))*100 AS case_fatality_rate
+FROM CovidPortfolioProject.dbo.CovidDeaths
+WHERE continent not like '%undefined%' 
+and location like '%brunei%'
+or location like '%cambodia%'
+or location like '%indonesia%'
+or location like '%laos%'
+or location like '%malaysia%'
+or location like '%myanmar%'
+or location like '%philippines%'
+or location like '%singapore%'
+or location like '%thailand%'
+or location like '%vietnam%'
+GROUP BY location
+
+SELECT *
+FROM HighestCFRASEAN
+
 /*
 Attack Rate (AR)
 AR is the proportion of an at-risk population that contracts the disease during a specified time interval in Indonesia
@@ -479,6 +540,26 @@ or location like '%vietnam%'
 GROUP BY location, population
 ORDER BY attack_rate DESC
 
+-- Creating View For The Highest AR in ASEAN Country
+CREATE VIEW HighestARASEAN AS
+SELECT location, MAX(total_cases) AS highest_total_cases, population, (MAX(total_cases)/population)*100 AS attack_rate 
+FROM CovidPortfolioProject.dbo.CovidDeaths
+WHERE continent not like '%undefined%' 
+and location like '%brunei%'
+or location like '%cambodia%'
+or location like '%indonesia%'
+or location like '%laos%'
+or location like '%malaysia%'
+or location like '%myanmar%'
+or location like '%philippines%'
+or location like '%singapore%'
+or location like '%thailand%'
+or location like '%vietnam%'
+GROUP BY location, population
+
+SELECT *
+FROM HighestARASEAN
+
 -- AFTER LOOKING AT COUNTRY, NOW I WILL BREAKING THINGS DOWN BY A CONTINENT.
 -- Looking For a Continent with The Highest Total Cases
 SELECT continent, MAX(total_cases) AS highest_total_cases
@@ -487,12 +568,32 @@ WHERE continent not like '%undefined%'
 GROUP BY continent
 ORDER BY highest_total_cases desc
 
+-- Creating View For The Highest Total Cases in Continent
+CREATE VIEW HighestTotalCasesContinent AS
+SELECT continent, MAX(total_cases) AS highest_total_cases
+FROM CovidPortfolioProject.dbo.CovidDeaths
+WHERE continent not like '%undefined%'
+GROUP BY continent
+
+SELECT *
+FROM HighestTotalCasesContinent
+
 -- Looking For a Continent with The Highest Total Deaths
 SELECT continent, MAX(total_deaths) AS highest_total_deaths
 FROM CovidPortfolioProject.dbo.CovidDeaths
 WHERE continent not like '%undefined%'
 GROUP BY continent
 ORDER BY highest_total_deaths desc
+
+-- Creating View For The Highest Total Deaths in Continent
+CREATE VIEW HighestTotalDeathsContinent AS
+SELECT continent, MAX(total_deaths) AS highest_total_deaths
+FROM CovidPortfolioProject.dbo.CovidDeaths
+WHERE continent not like '%undefined%'
+GROUP BY continent
+
+SELECT *
+FROM HighestTotalDeathsContinent
 
 -- AFTER LOOKING AT CONTINENT, NOW I WILL BREAKING THINGS DOWN BY THE LEVEL OF INCOME.
 -- Looking For The Highest Total Cases
@@ -502,6 +603,16 @@ WHERE continent like '%undefined%'
 GROUP BY location
 ORDER BY highest_total_cases desc
 
+-- Creating View For The Highest Total Cases By The Level of Income
+CREATE VIEW HighestTotalCasesIncome AS
+SELECT location, MAX(total_cases) AS highest_total_cases
+FROM CovidPortfolioProject.dbo.CovidDeaths
+WHERE continent like '%undefined%'
+GROUP BY location
+
+SELECT *
+FROM HighestTotalCasesIncome
+
 -- Looking For The Highest Total Deaths
 SELECT location, MAX(total_deaths) AS highest_total_deaths
 FROM CovidPortfolioProject.dbo.CovidDeaths
@@ -509,12 +620,32 @@ WHERE continent like '%undefined%'
 GROUP BY location
 ORDER BY highest_total_deaths desc
 
+-- Creating View For The Highest Total Deaths By The Level of Income
+CREATE VIEW HighestTotalDeathsIncome AS
+SELECT location, MAX(total_deaths) AS highest_total_deaths
+FROM CovidPortfolioProject.dbo.CovidDeaths
+WHERE continent like '%undefined%'
+GROUP BY location
+
+SELECT *
+FROM HighestTotalDeathsIncome
+
 -- GLOBAL CFR
 SELECT SUM(new_cases) AS total_cases, SUM(new_deaths) AS total_deaths,
 		SUM(new_deaths)/SUM(new_cases)*100 AS global_cfr
 FROM CovidPortfolioProject.dbo.CovidDeaths
 WHERE continent not like '%undefined%'
 ORDER BY 1,2
+
+-- Creating View For The Global CFR
+CREATE VIEW GlobalCFR AS
+SELECT SUM(new_cases) AS total_cases, SUM(new_deaths) AS total_deaths,
+		SUM(new_deaths)/SUM(new_cases)*100 AS global_cfr
+FROM CovidPortfolioProject.dbo.CovidDeaths
+WHERE continent not like '%undefined%'
+
+SELECT *
+FROM GlobalCFR
 
 -- Looking For Percentage of Population That Has Fully Received Covid-19 Vaccine in ASEAN Country
 SELECT Dea.location, Dea.population, MAX(Vac.people_fully_vaccinated) AS total_people_fully_vaccinated
@@ -534,6 +665,28 @@ or Dea.location like '%thailand%'
 or Dea.location like '%vietnam%'
 GROUP BY Dea.location, Dea.population
 ORDER BY 1
+
+-- Creating View For The Number of Population That Has Fully Received Covid-19 Vaccine in ASEAN Country
+CREATE VIEW FullyVaccinatedASEAN AS
+SELECT Dea.location, Dea.population, MAX(Vac.people_fully_vaccinated) AS total_people_fully_vaccinated
+FROM CovidPortfolioProject..CovidDeaths AS Dea
+JOIN CovidPortfolioProject..CovidVaccinations As Vac
+	ON Dea.location = Vac.location
+WHERE Dea.continent not like '%undefined%' 
+and Dea.location like '%brunei%'
+or Dea.location like '%cambodia%'
+or Dea.location like '%indonesia%'
+or Dea.location like '%laos%'
+or Dea.location like '%malaysia%'
+or Dea.location like '%myanmar%'
+or Dea.location like '%philippines%'
+or Dea.location like '%singapore%'
+or Dea.location like '%thailand%'
+or Dea.location like '%vietnam%'
+GROUP BY Dea.location, Dea.population
+
+SELECT *
+FROM FullyVaccinatedASEAN
 
 -- Now, I Will Using CTE to Perform Calculation on Percent Poppulation Vaccinated in ASEAN Country
 WITH PopVac (Location, Population, Total_People_Fully_Vaccinated)
