@@ -1,0 +1,95 @@
+# Covid-19 Portfolio Project
+
+## What I Do in This Project
+
+- Analyzing Using Microsoft SQL.
+	- Data Profiling.
+		- Looking All The Data from The CovidDeaths Table.
+		- Counting How Many Rows in The CovidDeaths Table.
+		- Showing The Data Type For Every Column in The CovidDeaths Table.
+		- Looking All The Data from The CovidVaccinations Table.
+		- Counting How Many Rows in The CovidVaccinations Table.
+		- Showing The Data Type For Every Column in The CovidVaccinations Table.
+	- Data Cleansing.
+		- CovidDeaths Table.
+			- iso_code Column.
+				- Checking The iso_code Column.
+				- Removing The iso_code Column.
+			- continent Column.
+				- Checking The Amount of Unique Value in continent Column.
+				- Checking Missing Value on continent Column.
+				- Removing Row That Has A Null Value in continent Column and North America, Asia, World, 
+Africa, Oceania, European Union, South America, International, Europe.
+				- Replacing Null Values in continent Column into Undefined.
+			- location Column.
+				- Checking Missing Value on location Column.
+				- Checking The Amount of Unique Value in location Column.
+			- date Column.
+				- Checking Missing Value on date Column.
+				- Changing The Format Date on date Column.
+				- Removing date column From The CovidDeaths Column.
+			- population Column.
+				- Checking Missing Value on population Column.
+				- Handling Missing Value on population Column.
+			- total_cases Column.
+				- Checking Missing Value on total_cases Column.
+				- Handling Missing Value on total_cases Column.
+			- new_cases Column.
+				- Checking Missing Value on new_cases Column.
+				- Handling Missing Value on new_cases Column.
+			- total_deaths Column.
+				- Checking Missing Value on total_deaths Column.
+				- Handling Missing Value on total_deaths Column.
+			- new_deaths Column.
+				- Checking Missing Value on new_deaths Column.
+				- Handling Missing Value on new_deaths Column.
+			- Removing Unused Column.
+			- Changing The Data Type.
+		- CovidVaccinations Table.
+			- iso_code Column.
+				- Checking The iso_code Column.
+				- Removing The iso_code Column.
+			- continent Column.
+				- Checking The Amount of Unique Value in continent Column.
+				- Checking Missing Value on continent Column.
+				- Removing Row That Has A Null Value in continent Column and North America, Asia, World, 
+Africa, Oceania, European Union, South America, International, Europe.
+				- Replacing Null Values in continent Column into Undefined.
+			- location Column.
+				- Checking Missing Value on location Column.
+				- Checking The Amount of Unique Value in location Column.
+			- date Column.
+				- Checking Missing Value on date Column.
+				- Changing The Format Date on date Column.
+				- Removing date column From The CovidDeaths Column.
+			- people_fully_vaccinated Column.
+				- Checking Missing Value on people_fully_vaccinated Column.
+				- Handling Missing Value on people_fully_vaccinated Column.
+			- total_boosters Column.
+				- Checking Missing Value on total_boosters Column.
+				- Handling Missing Value on total_boosters Column.
+			- Removing Unused Column.
+			- Changing The Data Type.
+	- Data Exploration
+		- Looking For The Highest Total Cases in ASEAN Country.
+			- Creating View For The Highest Total Cases in ASEAN Country.
+		- Looking For The Highest Total Deaths in ASEAN Country.
+			- Creating View For The Highest Total Deaths in ASEAN Country.
+		- Looking For The Highest CFR in ASEAN Country.
+			- Creating View For The Highest CFR in ASEAN Country.
+		- Looking For The Highest AR in ASEAN Country.
+			- Creating View For The Highest AR in ASEAN Country.
+		- Looking For a Continent with The Highest Total Cases.
+			- Creating View For The Highest Total Cases in Continent.
+		- Looking For a Continent with The Highest Total Deaths.
+			- Creating View For The Highest Total Deaths in Continent.
+		- Looking For The Highest Total Cases By The Level of Income.
+			- Creating View For The Highest Total Cases By The Level of Income.
+		- Looking For The Highest Total Deaths By The Level of Income.
+			- Creating View For The Highest Total Deaths By The Level of Income.
+		- Looking For Global CFR.
+			- Creating View For The Global CFR.
+		- Looking For Percentage of Population That Has Fully Received Covid-19 Vaccine in ASEAN Country.
+			- Creating View For The Number of Population That Has Fully Received Covid-19 Vaccine in ASEAN Country.
+		- Using CTE to Perform Calculation on Percent Poppulation Vaccinated in ASEAN Country.
+		- Using Temp Table to Perform Calculation on Percent Poppulation Vaccinated in ASEAN Country
