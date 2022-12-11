@@ -1,5 +1,12 @@
 # Covid-19 Portfolio Project
 
+<p align="justify">Coronavirus disease, or COVID-19, is an infectious disease caused by the SARS-CoV-2 virus. Most people who fall sick with COVID-19 will experience mild to moderate symptoms and recover without special treatment. However, some will become seriously ill and require medical attention.</p>
+
+<p align="justify">The virus can spread from an infected person’s mouth or nose in small liquid particles when they cough, sneeze, speak, sing or breathe. These particles range from larger respiratory droplets to smaller aerosols. You can be infected by breathing in the virus if you are near someone with COVID-19 or by touching a contaminated surface and your eyes, nose, or mouth. The virus spreads more easily indoors and in crowded settings. (source: https://www.who.int/news-room/questions-and-answers/item/coronavirus-disease-covid-19-how-is-it-transmitted).</p>
+
+<p align="justify">So, I will analyze data regarding Covid-19. The data I use contains a list of countries, the number of cases, the number of deaths, the number of people vaccinated, and much more. In addition, this data starts from January 1, 2020, to October 18, 2022.</p>
+
+
 ## What I Do in This Project
 
 - Analyzing Using Microsoft SQL.
