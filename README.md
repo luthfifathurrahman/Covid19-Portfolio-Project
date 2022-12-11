@@ -93,3 +93,6 @@ Africa, Oceania, European Union, South America, International, Europe.
 			- Creating View For The Number of Population That Has Fully Received Covid-19 Vaccine in ASEAN Country.
 		- Using CTE to Perform Calculation on Percent Poppulation Vaccinated in ASEAN Country.
 		- Using Temp Table to Perform Calculation on Percent Poppulation Vaccinated in ASEAN Country
+
+## Data Source
+Source: https://ourworldindata.org/
